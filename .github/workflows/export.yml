@@ -20,7 +20,7 @@ jobs:
     - name: checkout pypoe
       uses: actions/checkout@v3
       with:
-        repository: lvlvllvlvllvlvl/PyPoE
+        repository: Project-Path-of-Exile-Wiki/PyPoE
         path: PyPoE
     - name: checkout pob
       uses: actions/checkout@v3
@@ -73,28 +73,4 @@ jobs:
       uses: actions/upload-pages-artifact@v1
       with:
         path: RePoE/RePoE/data/
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    needs: build
-    if: github.event_name == 'workflow_dispatch' || needs.build.outputs.changes_detected == 'true'
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: deploy gh-pages
-        id: deployment
-        uses: actions/deploy-pages@v1
-      - name: trigger poetrage
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.VERSION_COMMIT_PAT }}
-          repository: lvlvllvlvllvlvl/poetrage
-          event-type: build
+    
