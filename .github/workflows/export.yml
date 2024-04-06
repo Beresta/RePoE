@@ -20,7 +20,7 @@ jobs:
     - name: checkout pypoe
       uses: actions/checkout@v3
       with:
-        repository: Project-Path-of-Exile-Wiki/PyPoE
+        repository: Beresta/PyPoE
         path: PyPoE
     - name: checkout pob
       uses: actions/checkout@v3
